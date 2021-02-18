@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("header") -%>
+  <body>
+    <div class="box heading">
+      <h1><%= listTitle %></h1>
+    </div>
+
+    <!-- List Item Section -->
+    <div class="box">
+      <% for( let i = 0; i < newListItems.length; i++ ) { %>
+      <div class="item">
+        <input type="checkbox" name="itemChecked" />
+        <p><%= newListItems[i] %></p>
+      </div>
+      <% } %>
+
+      <form class="item" action="<%= route %> " method="post">
+        <input type="text" name="newItem" autofocus placeholder="New Item" />
+        <button type="submit" name="list" value="<%= listTitle %> ">+</button>
+      </form>
+    </div>
+
+    <!-- Error Section -->
+    <% if (error !== "") { %>
+    <div class="box">
+      <div class="item">
+        <p class="error"><%= error %></p>
+      </div>
+    </div>
+    <% } %>
+  </body>
+  <%- include("footer") -%>
+</html>
